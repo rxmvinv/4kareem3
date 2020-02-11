@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const MainContent =() => {
+const MainContent = () => {
     const videoStatus = ['rendering', 'rendered', 'playing'];
     const selectedItems = ['all', 'selected'];
 

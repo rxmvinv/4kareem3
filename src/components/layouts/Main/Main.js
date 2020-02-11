@@ -18,9 +18,9 @@ const Main = props => {
   return (
       <div className={`mainLayout`}>
         {/* {<Header />} */}
-        <main className={`pageContent`} >
+        <div className={`pageContent`} >
           {children}
-        </main>
+        </div>
         {/* {<Footer />} */}
       </div>
   );
