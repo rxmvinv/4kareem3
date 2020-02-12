@@ -4,9 +4,9 @@ import C from "../actionTypes";
 export const currentItem = (state = {}, action) => {
     switch (action.type) {
         case C.PREVIOUS_ITEM:
-            return action.value;
+            return {...state, current: action.value};
         case C.NEXT_ITEM:
-            return action.value;
+            return {...state, current: action.value};
         case C.PAUSE_ITEM:
             return {...state, isPlaying: false}
         case C.PLAY_ITEM:

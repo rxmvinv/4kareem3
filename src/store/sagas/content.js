@@ -1,6 +1,6 @@
-import { take, fork, cancel, put, call, delay} from 'redux-saga/effects';
+import { take, fork, cancel, put, call, delay, takeLatest} from 'redux-saga/effects';
 import actionTypes from '../actionTypes';
-// import { callApi } from "./callApi";
+import { callApi } from "./callApi";
 import { selectItemList, toggleItemOrder, toggleItemProcess, 
     successItemLoading, failureItemLoading } from "../actionCreators/content";
 
@@ -32,29 +32,29 @@ export function* watchItemStatus() {
     }
 }
 
-function* switchItemOrder( { order } ) {
-    yield put(toggleItemOrder(order));
+function* switchItemOrder( action ) {
+    yield put(toggleItemOrder(action.value.order));
 }
 
 export function* watchItemOrder() {
     while (true) {
-        yield takeLatest([actionTypes.PREVIOUS_ITEM, actionTypes.NEXT_ITEM], switchItemOrder, action.value);
+        yield takeLatest([actionTypes.PREVIOUS_ITEM, actionTypes.NEXT_ITEM], switchItemOrder);
     }
 }
 
-function* switchItemProcess( { process } ) {
-    yield put(toggleItemProcess(process));
+function* switchItemProcess( action ) {
+    yield put(toggleItemProcess(action.value.process));
 }
 
 export function* watchItemProcess() {
     while (true) {
-        yield takeLatest([actionTypes.PAUSE_ITEM, actionTypes.PLAY_ITEM], switchItemProcess, action.value);
+        yield takeLatest([actionTypes.PAUSE_ITEM, actionTypes.PLAY_ITEM], switchItemProcess);
     }
 }
 
-export function* watchList() {
-    while (true) {
-        const action = yield take(actionTypes.PLAY_SELECTED);
-        yield put(switchItemProcess(action.value));
-    }
-}
+// export function* watchList() {
+//     while (true) {
+//         const action = yield take(actionTypes.PLAY_SELECTED);
+//         yield put(switchItemProcess(action.value));
+//     }
+// }

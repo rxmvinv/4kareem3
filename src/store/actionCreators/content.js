@@ -16,6 +16,7 @@ export function toggleItemOrder( order ) {
 }
   
 export function toggleItemProcess( process ) {
+  console.log(process);
     return {
         type: actionTypes[`${process}_ITEM`], //PAUSE/PLAY
         process
