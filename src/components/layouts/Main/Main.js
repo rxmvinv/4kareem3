@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 //import Header from '../../Header';
 //import Footer from '../../Footer';
 //import '../../../assets/stylesheets/Layouts/Main.scss'
@@ -18,6 +20,9 @@ const Main = props => {
   return (
       <div className={`mainLayout`}>
         {/* {<Header />} */}
+        <Link to={'./'}>
+          x close
+        </Link>
         <div className={`pageContent`} >
           {children}
         </div>

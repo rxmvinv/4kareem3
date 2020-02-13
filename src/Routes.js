@@ -41,13 +41,8 @@ const Routes = ({ }) => {
         <div className="App">
             <React.Fragment>
                 <MainContent />
+                <MenuView />
                 <Switch>
-                    <RouteWithLayout
-                        component={MenuView}
-                        exact
-                        layout={MainLayout}
-                        path={`/menu`}
-                    />
                     <RouteWithLayout
                         component={AboutView}
                         exact
