@@ -8,31 +8,37 @@ export function selectItemList ( selected ) {
     };
 }
 
-export function toggleItemOrder( order ) {
+export function toggleItemOrder( {order, current} ) {
     return {
       type: actionTypes[`${order}_ITEM`], //PREVIOUS/NEXT
-      order
+      current
     };
 }
   
 export function toggleItemProcess( process ) {
-  console.log(process);
     return {
         type: actionTypes[`${process}_ITEM`], //PAUSE/PLAY
         process
     };
 }
 
-export function successItemLoading( loadedItem ) {
+export function requestItemsLoading( params ) {
+  return {
+    type: actionTypes.ITEMS_LOADING,
+    params
+  };
+}
+
+export function successItemsLoading( loadedItems ) {
     return {
-      type: actionTypes.ITEM_LOADED,
-      loadedItem
+      type: actionTypes.ITEMS_LOADED,
+      loadedItems
     };
 }
 
 export function failureItemLoading(e) {
     console.log(e);
     return {
-      type: actionTypes.ITEM_NOT_LOADED
+      type: actionTypes.ITEMS_NOT_LOADED
     };
 }

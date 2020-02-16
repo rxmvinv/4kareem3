@@ -1,5 +1,40 @@
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  font-size: 21px;
+  color: #fff;
+  background: #282c34;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+button {
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 21px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.menu {
+  position: absolute;
+  height: 100vh;
+  width: 400px;
+  left: -400px;
+}
+.menu.released {
+  left: -400px;
+}
+
+.menu.expanded {
+  left: 0;
 }
 
 .App-logo {
@@ -7,11 +42,47 @@
   pointer-events: none;
 }
 
+.itemsSelector {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+}
+.leftBottomCorner {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  z-index: 1;
+}
+.centralButtons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: auto;
+}
+.rightTopCorner {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+.rightBottomCorner {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-  }
+  } 
 }
+
+@media screen and (max-width: 600) {
+  .menu {
+    width: 100vw;
+  }
+} 
 
 .App-header {
   background-color: #282c34;

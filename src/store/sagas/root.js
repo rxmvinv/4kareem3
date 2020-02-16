@@ -1,6 +1,6 @@
 import { all, call } from 'redux-saga/effects';
 import { watchMenu, watchVolume } from './interface';
-import { watchList, watchItemOrder, watchItemStatus, watchItemProcess } from './content';
+import { watchList, watchItemOrder, watchItemsStatus, watchItemProcess } from './content';
 
 export default function* rootSaga() {
     yield all([
@@ -8,7 +8,7 @@ export default function* rootSaga() {
         call(watchVolume),
         call(watchList),
         call(watchItemOrder),
-        call(watchItemStatus),
+        call(watchItemsStatus),
         call(watchItemProcess)
     ]);
 }

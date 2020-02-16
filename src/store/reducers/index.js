@@ -1,2 +1,2 @@
-export { currentItem, selectedList, itemIsLoaded } from './Content';
+export { currentItem, selectedList, itemsLoaded } from './Content';
 export { menuIsOpened, volume } from './UserInterface';
