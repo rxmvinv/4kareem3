@@ -1,7 +1,7 @@
 {
-    "currentItem": {},
+    "currentItem": {"isPlaying": false},
     "menuIsOpened": false,
     "volume": 100,
-    "selectedList": ["all"],
+    "selectedList": [],
     "itemsLoaded": []
   }

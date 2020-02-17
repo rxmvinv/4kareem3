@@ -4,11 +4,11 @@ import C from "../actionTypes";
 export const currentItem = (state = {isPlaying: false}, action) => {
     switch (action.type) {
         case C.PREVIOUS_ITEM:
-            console.log(action);
-            return {...state, current: action.value};
+            console.log(state, action);
+            return {...state, ...action.current};
         case C.NEXT_ITEM:
-            console.log(action);
-            return {...state, current: action.value};
+            console.log(state, action);
+            return {...state, ...action.current};
         case C.PAUSE_ITEM:
             return {...state, isPlaying: false}
         case C.PLAY_ITEM:
@@ -23,7 +23,17 @@ export const currentItem = (state = {isPlaying: false}, action) => {
 export const selectedList = (state = [], action) => {
     switch (action.type) {
         case C.SELECT_ITEM:
-            return [...state, action.value]
+            let presented = state;
+            presented.forEach((tag, index) => {
+                if (tag === action.selected) {
+                    delete presented[index];
+                }
+            });
+            presented.push(action.selected);
+            console.log(presented, state, action)
+            return presented
+            // console.log(action)
+            // return [...state, action.selected]
         case C.PLAY_SELECTED:
             return [...state]
         default:
@@ -31,30 +41,12 @@ export const selectedList = (state = [], action) => {
     }
 };
 
-const defaultList = [
-    {
-        id: 1,
-        category: "Shabjdeed",
-        url: "https://www.youtube.com/watch?v=oyq0PaCGnC0",
-    },
-    {
-        id: 2,
-        category: "Zenobia",
-        url: "https://www.youtube.com/watch?v=baWVj9dMi0U",
-    },
-    {
-        id: 3,
-        category: "Soho Rezanejad",
-        url: "https://www.youtube.com/watch?v=bUXU3jzYXcM",
-    }
-];
-
-export const itemsLoaded = (state = defaultList, action) => {
+export const itemsLoaded = (state = [], action) => {
     switch (action.type) {
         case C.ITEMS_LOADING:
-            return state
+            return [...state]
         case C.ITEMS_LOADED:
-            return defaultList//action.loadedItems
+            return action.loadedItems
         case C.ITEMS_NOT_LOADED:
             return state
         default:

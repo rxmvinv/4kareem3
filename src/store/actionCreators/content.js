@@ -2,6 +2,7 @@ import actionTypes from '../actionTypes';
 
 
 export function selectItemList ( selected ) {
+  console.log(selected);
     return {
       type: actionTypes.SELECT_ITEM,
       selected
@@ -11,7 +12,8 @@ export function selectItemList ( selected ) {
 export function toggleItemOrder( {order, current} ) {
     return {
       type: actionTypes[`${order}_ITEM`], //PREVIOUS/NEXT
-      current
+      current,
+      order
     };
 }
   
@@ -30,6 +32,7 @@ export function requestItemsLoading( params ) {
 }
 
 export function successItemsLoading( loadedItems ) {
+  console.log(loadedItems, 'almost loaded')
     return {
       type: actionTypes.ITEMS_LOADED,
       loadedItems
