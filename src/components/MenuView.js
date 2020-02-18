@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../store/actionCreators/interface';
 import { selectItemList } from '../store/actionCreators/content';
 
+//add all button and functionality
 //set selected items to local array and dispatch "PLAY_SELECTED" on menu closing
 //add case to Loaded if SKIPPED then call next/previous again
 const MenuView =() => {
