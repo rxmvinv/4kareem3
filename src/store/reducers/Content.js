@@ -23,19 +23,19 @@ export const currentItem = (state = {isPlaying: false}, action) => {
 export const selectedList = (state = [], action) => {
     switch (action.type) {
         case C.SELECT_ITEM:
-            let presented = state;
-            presented.forEach((tag, index) => {
-                if (tag === action.selected) {
-                    delete presented[index];
-                }
-            });
-            presented.push(action.selected);
-            console.log(presented, state, action)
-            return presented
-            // console.log(action)
-            // return [...state, action.selected]
+            // let presented = state;
+            // presented.forEach((tag, index) => {
+            //     if (tag === action.selected) {
+            //         delete presented[index];
+            //     }
+            // });
+            // presented.push(action.selected);
+            // console.log(presented, state, action)
+            // return presented
+            // // console.log(action)
+            return [...state, action.selected]
         case C.PLAY_SELECTED:
-            return [...state]
+            return action.selected//[...state]
         default:
             return state
     }

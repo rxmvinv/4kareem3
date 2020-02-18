@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFullScreen } from 'react-browser-hooks';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { toggleItemProcess, requestItemsLoading, toggleItemOrder, selectItemList } from '../store/actionCreators/content';
 import { toggleMenu, toggleVolume } from '../store/actionCreators/interface';
 import ReactPlayer from 'react-player';
@@ -14,6 +14,7 @@ const MainContent = () => {
     const volumeState = useSelector(state => state.volume);
     const itemsLoaded = useSelector(state => state.itemsLoaded);
     const fs = useFullScreen();
+    const currentLocation = useLocation().pathname;
 
     const process = currentItem.isPlaying ? 'PAUSE' : 'PLAY';
     const volume = volumeState ? 100 : 0;
@@ -82,6 +83,7 @@ const MainContent = () => {
                 onPause={() => changeItemProcess('PAUSE')}
             ></ReactPlayer>
             <button className={'itemsSelector'} onClick={() => switchMenu()}>ARTISTS: {'ALL'}</button>
+            <div className="mainLogo">REVERBRAP.COM</div>
             <div className={'leftBottomCorner'}>
                 <button>submit +</button>
                 <button onClick={() => switchVolume()}>{volume ? 'mute' : 'unmute'}</button>
@@ -97,14 +99,14 @@ const MainContent = () => {
             <Link to={'./'}>Home</Link>
             
             <div className={'rightTopCorner'}>
-                <Link to={'./about'}>About</Link>
-                <Link to={'./apps'}>Apps</Link>
+                <Link to={'./about'} className={`${currentLocation === '/about' ? 'activeContent' : ''}`}>About</Link>
+                <Link to={'./apps'} className={`${currentLocation === '/apps' ? 'activeContent' : ''}`}>Apps</Link>
                 <Link to={'./store'}>Store</Link>
             </div>
 
             <div className={'rightBottomCorner'}>
-                <Link to={'./stream'}>Stream</Link>
-                <Link to={'./share'}>Share</Link>
+                <Link to={'./stream'} className={`${currentLocation === '/stream' ? 'activeContent' : ''}`}>Stream</Link>
+                <Link to={'./share'} className={`${currentLocation === '/share' ? 'activeContent' : ''}`}>Share</Link>
                 <button onClick={fs.toggle}>Fullscreen</button>
             </div>
         </div>
