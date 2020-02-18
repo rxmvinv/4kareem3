@@ -1,8 +1,7 @@
 import actionTypes from '../actionTypes';
 
 
-export function selectItemList ( selected ) {
-  console.log(selected);
+export function selectItemList( selected ) {
     return {
       type: actionTypes.SELECT_ITEM,
       selected

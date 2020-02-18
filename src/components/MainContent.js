@@ -52,7 +52,7 @@ const MainContent = () => {
         // and this selection method should dispatch toggleNext;
         console.log(itemsLoaded);
         itemsLoaded.find(item => {
-            dispatch(selectItemList(item.category));
+            dispatch(selectItemList({category: item.category, selected: false}));
             if (item.id === (currentItem.id ? currentItem.id : 1)) {
                 dispatch(toggleItemOrder({order: 'NEXT', current: {...item, isPlaying: currentItem.isPlaying} }))
             }

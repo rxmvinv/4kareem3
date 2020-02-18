@@ -14,41 +14,29 @@ const MenuView =() => {
 
     const switchMenu = useCallback((play) => {
         if (play) {
-            // dispatch(selectItemList(item));
+            //play selected is changing Loaded REDUCER and adding SKIPPED property if category is not choosen
+            //dispatch(selectItemList(item));
         }
         dispatch(toggleMenu(!menuIsOpened));
     }, [menuIsOpened]);
 
-    const chooseCategory = useCallback((item) => {
-        const tags = selected;
-        for (let t in tags) {
-            if (tags[t] === item) {
-                delete tags[t];
-            } 
-            // else {
-            //     tags.push(item);
-            // }
-        }
-        const uniq = [...new Set(tags)];
-        setSelected(uniq);
+    const chooseCategory = useCallback((item, index) => {
+        const duplicateArr = selected;
+        duplicateArr[index].selected = !duplicateArr[index].selected
+        setSelected([...duplicateArr]);
     }, [selected]);
 
     useEffect(() => {
-        console.log(selectedList);
         setSelected(selectedList);
     }, [selectedList]);
-
-    useEffect(() => {
-        console.log(selected);
-    }, [selected]);
 
     return (
         <div className={`menu ${menuIsOpened ? 'expanded' : 'released'}`}>
             <button className="closeMenu" onClick={() => switchMenu()}>Close X</button>
             <div className="menuList">
                 {
-                    selectedList.map((item, index) => <div key={index} className={`menuItem ${''}`} style={{backgroundImage: `url(./images/${item.toLowerCase()}.png)`}} onClick={() => chooseCategory(item)}>
-                        {item}
+                    selected.map((item, index) => <div key={index} className={`menuItem ${item.selected ? 'selected' : ''}`} style={{backgroundImage: `url(./images/${item.category.toLowerCase()}.png)`}} onClick={() => chooseCategory(item, index)}>
+                        {item.category}
                     </div>)
                 }
             </div>
